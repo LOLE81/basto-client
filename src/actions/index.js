@@ -14,7 +14,7 @@ export function getAnimals() {
 };
 
 export function addAnimal(payload) {
-    return async function(dispatch) {
+    return async function() {
         try {
             const response = await axios.post(`${LOCAL_HOST}/api/animal`, payload);
         } catch (error) {

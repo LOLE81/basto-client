@@ -2,7 +2,6 @@ import { GET_ANIMAL, GET_ANIMALS, DELETE_ANIMAL, UPDATE_ANIMAL} from '../actions
 
 const initialState = {
     animals: [],
-    //allAnimals: [],    
     animalDetails: [],
     animalTypes: ['Novillo', 'Toro', 'Vaquillona'],
     devices: ['COLLAR', 'CARAVANA']
@@ -14,7 +13,6 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 animals: action.payload,
-                allAnimals: action.payload
             };
 
         case GET_ANIMAL:

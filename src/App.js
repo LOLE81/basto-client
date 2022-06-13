@@ -1,7 +1,8 @@
-import { Routes, Route, Switch } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import AnimalDetails from './components/AnimalDetails';
 import Form from './components/Form';
 import Home from './components/Home';
+import './app.css';
 
 function App() {
   return (  

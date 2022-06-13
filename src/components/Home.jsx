@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
 import Animal from './Animal';
 import { getAnimals } from '../actions';
-
+import './home.css'
 
 export default function Home() {
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch();    
     const allAnimals = useSelector((state) =>state.animals);
 
     //Pagination:
@@ -32,21 +32,21 @@ export default function Home() {
 
     
     return (
-        <div>
-            <div>
+        <div className='app-container'>
+            <div className='pagination-container'>
                 <Pagination animalsPerPage={animalsPerPage} allAnimals={allAnimals.length} paged={paged} />
             </div>
-            <div>
-                <table>
+            <div className='table-container'>
+                <table className='table'>
                 <tbody>
                 <tr>
-                    <th>ID SENASA</th>
-                    <th>Tipo de Animal</th>
-                    <th>Peso (kg)</th>
-                    <th>Nombre del potrero</th>
-                    <th>Tipo de Dispositivo</th>
-                    <th>Número de dispositivo</th>
-                    <th>Editar/Eliminar</th>
+                    <th className='table-titles'>ID SENASA</th>
+                    <th className='table-titles'>Tipo de Animal</th>
+                    <th className='table-titles'>Peso (kg)</th>
+                    <th className='table-titles'>Nombre del potrero</th>
+                    <th className='table-titles'>Tipo de Dispositivo</th>
+                    <th className='table-titles'>Número de dispositivo</th>
+                    <th className='table-titles'>Editar/Eliminar</th>
                 </tr>
                 {
                     showAnimalsPage?.map(animal => {
@@ -62,9 +62,9 @@ export default function Home() {
                 </tbody>
                 </table>
             </div>
-            <div>
-                <Link to="/form">
-                    <button className="form_button">FORMULARIO PARA ALTAS</button>
+            <div className='form-container-button'>
+                <Link className='form-link' to="/form">
+                    <button className="form-button">FORMULARIO PARA ALTAS</button>
                 </Link>
             </div>
         </div>

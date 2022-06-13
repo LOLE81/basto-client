@@ -1,4 +1,5 @@
 import React from 'react';
+import './pagination.css'
 
 export default function Pagination({animalsPerPage, allAnimals, paged}) {
     
@@ -19,7 +20,7 @@ export default function Pagination({animalsPerPage, allAnimals, paged}) {
                 <ul className="pages">
                     {pages?.map(p =>(
                         <li className="page" key={p}>
-                            <button className="pageBtn" onClick={() => paged(p)} style={{width:"30px"}}>{p}</button>
+                            <button className="page-button" onClick={() => paged(p)} style={{width:"30px"}}>{p}</button>
                         </li>
                     ))}
                 </ul>
