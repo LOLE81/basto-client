@@ -27,7 +27,7 @@ export default function Animal({ id_senasa, type, weight, cattle, device, number
             <td>{device}</td>
             <td>{number}</td>
             <td className='edit-delete'>
-                <Link className='update-link' to={"/update"}>
+                <Link className='update-link' to={`/update/${id}`}>
                     <button onClick={e => {handleClick(e)}} className="update-button">UPDATE</button>
                 </Link>
                 <button className="update-button" onClick={e => {handleDeleteClick(e)}}>ELIMINAR</button>

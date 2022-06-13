@@ -1,20 +1,27 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addAnimal, getAnimals } from "../actions";
+import { getAnimals, updateAnimal, getAnimal } from "../actions";
 import { useNavigate } from "react-router-dom";
 import "./form.css";
 
-export default function Form() {
-  const dispatch = useDispatch();
-  const animalTypes = useSelector((state) => state.animalTypes);
-  const devices = useSelector((state) => state.devices);
-  const allAnimals = useSelector((state) => state.animals);
-  const navigate = useNavigate();
+export default function Update(id) {
+    const dispatch = useDispatch();
+    const animalTypes = useSelector((state) => state.animalTypes);
+    const devices = useSelector((state) => state.devices);
+    const allAnimals = useSelector((state) => state.animals);
+    const animalDetails = useSelector(state => state.animalDetails)
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        dispatch(getAnimals());
+    }, [dispatch]);
+    
+    //Getting animal and saving details in global state:
+      useEffect(() => {
+          dispatch(getAnimal(id))
+      }, [id]) 
 
-  useEffect(() => {
-    dispatch(getAnimals());
-  }, [dispatch]);
 
   //Validate errors function:
   function validate(input) {
@@ -60,6 +67,7 @@ export default function Form() {
 
     return errors;
   }
+
 
   //Initialize an empty errors object (local state)
   const [errors, setErrors] = useState({});
@@ -133,8 +141,8 @@ export default function Form() {
       input.device_number === ""
     ) {
       alert("Por favor complete el formulario");
-    } else {
-      dispatch(addAnimal(input));
+    } else {        
+      dispatch(updateAnimal(animalDetails._id, input));
       alert("Alta confirmada");
       setInput({
         id_senasa: "",
@@ -245,7 +253,7 @@ export default function Form() {
         </div>
         <div className="submit-goback-container">
           <button className="submit-button" type="submit">
-            Agregar Animal
+            Confirmar cambios
           </button>
           <button
             type="button"
