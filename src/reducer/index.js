@@ -1,9 +1,9 @@
-import { GET_ANIMAL, GET_ANIMALS, SEARCH_ANIMAL, ALPHABETICAL_SORT, DELETE_ANIMAL, UPDATE_ANIMAL} from '../actions/types'
+import { GET_ANIMAL, GET_ANIMALS, DELETE_ANIMAL, UPDATE_ANIMAL} from '../actions/types'
 
 const initialState = {
     animals: [],
     //allAnimals: [],    
-    //animalDetails: [],
+    animalDetails: [],
     animalTypes: ['Novillo', 'Toro', 'Vaquillona'],
     devices: ['COLLAR', 'CARAVANA']
 }
@@ -17,7 +17,19 @@ export default function rootReducer(state = initialState, action) {
                 allAnimals: action.payload
             };
 
+        case GET_ANIMAL:
+            return {
+                ...state,
+                animalDetails: action.payload
+            }
+
         case UPDATE_ANIMAL:
+            return {
+                ...state,
+                animals: action.payload
+            }
+
+        case DELETE_ANIMAL:
             return {
                 ...state,
                 animals: action.payload

@@ -32,5 +32,28 @@ export function updateAnimal(id, payload) {
             console.log(error)
         }
     }
+};
+
+export function getAnimal(id) {
+    return async function(dispatch) {
+        try {
+            const response = await axios.get(`${LOCAL_HOST}/api/animals/${id}`);
+            return dispatch({type: GET_ANIMAL, payload: response.data})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+};
+
+export function deleteAnimal(id) {
+    return async function(dispatch) {
+        try {
+            const response = await axios.delete(`${LOCAL_HOST}/api/animal/${id}`);
+            return dispatch({type: DELETE_ANIMAL, payload: response.data})
+        } catch(error) {
+            console.log(error)
+        }
+    }
 }
+
 

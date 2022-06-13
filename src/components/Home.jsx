@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
 import Animal from './Animal';
 import { getAnimals } from '../actions';
-import Form from './Form';
 
 
 export default function Home() {
@@ -29,7 +28,7 @@ export default function Home() {
     //Get all animals from db when mounting component
     useEffect(() => {
         dispatch(getAnimals())
-    }, []);
+    }, [dispatch]);
 
     
     return (
@@ -39,6 +38,7 @@ export default function Home() {
             </div>
             <div>
                 <table>
+                <tbody>
                 <tr>
                     <th>ID SENASA</th>
                     <th>Tipo de Animal</th>
@@ -53,16 +53,19 @@ export default function Home() {
                         return (
                             <tr key={animal.id_senasa}>
                                 <Animal
-                                    id={animal.id_senasa} type={animal.type} weight={animal.weight} cattle={animal.cattle_ranch} device={animal.device} number={animal.device_number}
+                                    id_senasa={animal.id_senasa} type={animal.type} weight={animal.weight} cattle={animal.cattle_ranch} device={animal.device} number={animal.device_number} id={animal._id}
                                 />
                             </tr>
                         )
                     })
                 }
+                </tbody>
                 </table>
             </div>
             <div>
-                <Form />
+                <Link to="/form">
+                    <button className="form_button">FORMULARIO PARA ALTAS</button>
+                </Link>
             </div>
         </div>
     )

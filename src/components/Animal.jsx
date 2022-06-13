@@ -1,6 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom'
+import { deleteAnimal, getAnimal } from '../actions';
 
-export default function Animal({ id, type, weight, cattle, device, number }) {
+export default function Animal({ id_senasa, type, weight, cattle, device, number, id }) {
+    const dispatch = useDispatch();
+
+    function handleClick(e) {
+        dispatch(getAnimal(id))
+    }
+
+    function handleDeleteClick(e) {
+        dispatch(deleteAnimal(id))
+    }
+
     return (
         // <div>
         //     <table>
@@ -13,13 +26,18 @@ export default function Animal({ id, type, weight, cattle, device, number }) {
         //             <th>Número de dispositivo</th>
         //         </tr>
                 <>
-                    <td>{id}</td>
+                    <td>{id_senasa}</td>
                     <td>{type}</td>
                     <td>{weight}</td>
                     <td>{cattle}</td>
                     <td>{device}</td>
                     <td>{number}</td>
-                    <td>Update  Delete</td>
+                    <td>
+                        <Link to={"/update"}>
+                            <button onClick={e => {handleClick(e)}} className="updateButton">UPDATE</button>
+                        </Link>
+                        <button className="updateButton" onClick={e => {handleDeleteClick(e)}}>DELETE</button>
+                    </td>
                 </>
         //    
         //     {/* <ul>

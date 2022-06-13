@@ -1,14 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { addAnimal } from "../actions";
+import { useNavigate } from "react-router-dom";
 
 export default function Form() {
   const dispatch = useDispatch();
   //const history = useHistory();
   const animalTypes = useSelector((state) => state.animalTypes);
   const devices = useSelector((state) => state.devices);
+  const navigate = useNavigate();
 
   const [input, setInput] = useState({
     id_senasa: "",
@@ -54,6 +55,10 @@ export default function Form() {
         device_number: "",
       });
   };
+
+  function handleOnClick(e) {
+    navigate('/');
+  }
 
   return (
     <div>
@@ -133,6 +138,7 @@ export default function Form() {
           />
         </div>
         <button className="submitButton" type="submit">Agregar animal</button>
+        <button className="goBack_button" onClick={e => {handleOnClick(e)}}>Volver</button>
       </form>
     </div>
   );
