@@ -49,7 +49,11 @@ export function deleteAnimal(id) {
     return async function(dispatch) {
         try {
             const response = await axios.delete(`${LOCAL_HOST}/api/animal/${id}`);
-            return dispatch({type: DELETE_ANIMAL, payload: response.data})
+            
+            setTimeout(() => {                
+                return dispatch({type: DELETE_ANIMAL, payload: response.data})
+            }, 1600)
+
         } catch(error) {
             console.log(error)
         }
